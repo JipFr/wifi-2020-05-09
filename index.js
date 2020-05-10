@@ -11,7 +11,7 @@ async function main(data) {
 	let deviceNames = data.map(d => d.HostName || d.IPAddress || d.MACAddress);
 	
 	let d = new Date();
-	let timeStr = new Date().toISOString().replace(/\/|:|T/g, "-");
+	let timeStr = new Date().toISOString().replace(/\/|:/g, "-").replace(/T/g, " ");
 	
 	for(let name of deviceNames) {
 		if(!fs.existsSync(`data/${name}/`)) fs.mkdirSync(`data/${name}/`);
